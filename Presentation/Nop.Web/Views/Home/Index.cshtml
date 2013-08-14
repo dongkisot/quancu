@@ -1,0 +1,32 @@
+﻿@{
+    //Layout = "~/Views/Shared/_ColumnsThree.cshtml";
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+}
+<div class="page home-page">
+    <div class="page-body">
+        @Html.Widget("home_page_top")
+        
+        @* disable topic block:
+        @Html.Action("TopicBlock", "Topic", new { systemName = "HomePageText" })
+        *@
+        
+        @* display 
+            + news -- discount 1 x 1
+            + product -- feature product (2 x 1), 
+            + category -- 1 x 1
+            + best seller -- product 2 x 1
+            + custom -- image m x n
+        *@
+
+        @Html.Action("HomepageCategories", "Catalog")
+        @Html.Action("HomepageProducts", "Catalog")
+        @Html.Action("HomepageBestSellers", "Catalog")
+
+        @* disable news and poll
+        @Html.Action("HomePageNews", "News")
+        @Html.Action("HomePagePolls", "Poll")
+        *@
+
+        @Html.Widget("home_page_bottom")
+    </div>
+</div>
