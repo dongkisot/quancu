@@ -1212,21 +1212,6 @@ namespace Nop.Web.Controllers
             return PartialView(listModel);
         }
 
-        [ChildActionOnly]
-        public ActionResult HomePageItem()
-        {
-            // product, news, discount, best seller, category
-
-            var products = _productService.GetAllProductsDisplayedOnHomePage();
-            //ACL and store mapping
-            products = products.Where(p => _aclService.Authorize(p) && _storeMappingService.Authorize(p)).ToList();
-
-            var model = PrepareProductOverviewModels(products, true, true, productThumbPictureSize)
-                .ToList();
-
-
-        }
-
         #endregion
 
         #region Manufacturers
@@ -2760,5 +2745,22 @@ namespace Nop.Web.Controllers
         }
 
         #endregion
+
+
+        [ChildActionOnly]
+        public ActionResult HomePagedGridItem()
+        {
+            //// product, news, discount, best seller, category
+            //int? productThumbPictureSize = 10;
+
+            //var products = _productService.GetAllProductsDisplayedOnHomePage();
+            ////ACL and store mapping
+            //products = products.Where(p => _aclService.Authorize(p) && _storeMappingService.Authorize(p)).ToList();
+
+            //var model = PrepareProductOverviewModels(products, true, true, productThumbPictureSize)
+            //    .ToList();
+
+            return PartialView();
+        }
     }
 }

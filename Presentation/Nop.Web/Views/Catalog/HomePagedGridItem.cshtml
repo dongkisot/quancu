@@ -1,0 +1,127 @@
+﻿@{
+    //resources
+    Html.AppendCssFileParts("~/Content/Masonry/masonry.css");
+ 
+    Html.AppendScriptParts("~/Scripts/AnimOnScroll.js");
+    Html.AppendScriptParts("~/Scripts/imagesloaded.js");
+    Html.AppendScriptParts("~/Scripts/EventEmitter.min.js");
+    Html.AppendScriptParts("~/Scripts/masonry.pkgd.min.js");
+    Html.AppendScriptParts("~/Scripts/classie.js");
+}
+
+<div class="container">
+    <!-- Top Navigation -->
+    <div class="codrops-top clearfix">
+        <a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Tutorials/ExpandingSearchBar/"><span>Previous Demo</span></a>
+        <span class="right"><a href="http://dribbble.com/erikamackley">Illustrations by by Erika Mackley</a><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=15677"><span>Back to the Codrops Article</span></a></span>
+    </div>
+    <header>
+        <h1>Loading Effects for Grid Items <span>with CSS Animations</span></h1>	
+        <nav class="codrops-demos">
+            <a href="index.html">Demo 1</a>
+            <a class="current-demo" href="index2.html">Demo 2</a>
+            <a href="index3.html">Demo 3</a>
+            <a href="index4.html">Demo 4</a>
+            <a href="index5.html">Demo 5</a>
+            <a href="index6.html">Demo 6</a>
+            <a href="index7.html">Demo 7</a>
+            <a href="index8.html">Demo 8</a>
+        </nav>
+    </header>
+    <ul class="grid effect-2" id="grid">
+        <li><a href="http://drbl.in/fWMM"><img src="http://tympanus.net/Development/GridLoadingEffects/images/1.jpg"></a></li>
+        <li><a href="http://drbl.in/fWPV"><img src="http://tympanus.net/Development/GridLoadingEffects/images/3.jpg"></a></li>
+        <li><a href="http://drbl.in/fWMT"><img src="http://tympanus.net/Development/GridLoadingEffects/images/4.jpg"></a></li>
+        <li><a href="http://drbl.in/fQdt"><img src="http://tympanus.net/Development/GridLoadingEffects/images/12.png"></a></li>
+        <li><a href="http://drbl.in/fHaa"><img src="http://tympanus.net/Development/GridLoadingEffects/images/13.png"></a></li>
+        <li><a href="http://drbl.in/gXMo"><img src="http://tympanus.net/Development/GridLoadingEffects/images/10.png"></a></li>
+        <li><a href="http://drbl.in/gXMn"><img src="http://tympanus.net/Development/GridLoadingEffects/images/9.jpg"></a></li>
+        <li><a href="http://drbl.in/fzYo"><img src="http://tympanus.net/Development/GridLoadingEffects/images/2.jpg"></a></li>
+        <li><a href="http://drbl.in/fARU"><img src="http://tympanus.net/Development/GridLoadingEffects/images/14.png"></a></li>
+        <li><a href="http://drbl.in/fGhI"><img src="http://tympanus.net/Development/GridLoadingEffects/images/5.jpg"></a></li>
+        <li><a href="http://drbl.in/fKCf"><img src="http://tympanus.net/Development/GridLoadingEffects/images/6.jpg"></a></li>
+        <li><a href="http://drbl.in/fLBG"><img src="http://tympanus.net/Development/GridLoadingEffects/images/7.jpg"></a></li>
+        <li><a href="http://drbl.in/fPEY"><img src="http://tympanus.net/Development/GridLoadingEffects/images/8.jpg"></a></li>
+        <li><a href="http://drbl.in/fWwG"><img src="http://tympanus.net/Development/GridLoadingEffects/images/9.jpg"></a></li>
+        <li><a href="http://drbl.in/fQdt"><img src="http://tympanus.net/Development/GridLoadingEffects/images/12.png"></a></li>
+        <li><a href="http://drbl.in/fHaa"><img src="http://tympanus.net/Development/GridLoadingEffects/images/13.png"></a></li>
+        <li><a href="http://drbl.in/gXMo"><img src="http://tympanus.net/Development/GridLoadingEffects/images/10.png"></a></li>
+        <li><a href="http://drbl.in/gXMn"><img src="http://tympanus.net/Development/GridLoadingEffects/images/11.png"></a></li>
+        <li><a href="http://drbl.in/fzYo"><img src="http://tympanus.net/Development/GridLoadingEffects/images/2.jpg"></a></li>
+        <li><a href="http://drbl.in/fARU"><img src="http://tympanus.net/Development/GridLoadingEffects/images/14.png"></a></li>
+        <li><a href="http://drbl.in/fWMM"><img src="http://tympanus.net/Development/GridLoadingEffects/images/1.jpg"></a></li>
+        <li><a href="http://drbl.in/fWPV"><img src="http://tympanus.net/Development/GridLoadingEffects/images/3.jpg"></a></li>
+        <li><a href="http://drbl.in/fWMT"><img src="http://tympanus.net/Development/GridLoadingEffects/images/4.jpg"></a></li>
+        <li><a href="http://drbl.in/fGhI"><img src="http://tympanus.net/Development/GridLoadingEffects/images/5.jpg"></a></li>
+        <li><a href="http://drbl.in/fKCf"><img src="http://tympanus.net/Development/GridLoadingEffects/images/6.jpg"></a></li>
+        <li><a href="http://drbl.in/fLBG"><img src="http://tympanus.net/Development/GridLoadingEffects/images/7.jpg"></a></li>
+        <li><a href="http://drbl.in/fPEY"><img src="http://tympanus.net/Development/GridLoadingEffects/images/8.jpg"></a></li>
+        <li><a href="http://drbl.in/fWwG"><img src="http://tympanus.net/Development/GridLoadingEffects/images/9.jpg"></a></li>
+        <li><a href="http://drbl.in/fQdt"><img src="http://tympanus.net/Development/GridLoadingEffects/images/12.png"></a></li>
+        <li><a href="http://drbl.in/fHaa"><img src="http://tympanus.net/Development/GridLoadingEffects/images/13.png"></a></li>
+        <li><a href="http://drbl.in/gXMo"><img src="http://tympanus.net/Development/GridLoadingEffects/images/10.png"></a></li>
+        <li><a href="http://drbl.in/gXMn"><img src="http://tympanus.net/Development/GridLoadingEffects/images/11.png"></a></li>
+        <li><a href="http://drbl.in/fzYo"><img src="http://tympanus.net/Development/GridLoadingEffects/images/2.jpg"></a></li>
+        <li><a href="http://drbl.in/fARU"><img src="http://tympanus.net/Development/GridLoadingEffects/images/14.png"></a></li>
+        <li><a href="http://drbl.in/fWMM"><img src="http://tympanus.net/Development/GridLoadingEffects/images/1.jpg"></a></li>
+        <li><a href="http://drbl.in/fWPV"><img src="http://tympanus.net/Development/GridLoadingEffects/images/3.jpg"></a></li>
+        <li><a href="http://drbl.in/fWMT"><img src="http://tympanus.net/Development/GridLoadingEffects/images/4.jpg"></a></li>
+        <li><a href="http://drbl.in/fGhI"><img src="http://tympanus.net/Development/GridLoadingEffects/images/5.jpg"></a></li>
+        <li><a href="http://drbl.in/fKCf"><img src="http://tympanus.net/Development/GridLoadingEffects/images/6.jpg"></a></li>
+        <li><a href="http://drbl.in/fLBG"><img src="http://tympanus.net/Development/GridLoadingEffects/images/7.jpg"></a></li>
+        <li><a href="http://drbl.in/fPEY"><img src="http://tympanus.net/Development/GridLoadingEffects/images/8.jpg"></a></li>
+        <li><a href="http://drbl.in/fWwG"><img src="http://tympanus.net/Development/GridLoadingEffects/images/9.jpg"></a></li>
+        <li><a href="http://drbl.in/fQdt"><img src="http://tympanus.net/Development/GridLoadingEffects/images/12.png"></a></li>
+        <li><a href="http://drbl.in/fHaa"><img src="http://tympanus.net/Development/GridLoadingEffects/images/13.png"></a></li>
+        <li><a href="http://drbl.in/gXMo"><img src="http://tympanus.net/Development/GridLoadingEffects/images/10.png"></a></li>
+        <li><a href="http://drbl.in/gXMn"><img src="http://tympanus.net/Development/GridLoadingEffects/images/11.png"></a></li>
+        <li><a href="http://drbl.in/fzYo"><img src="http://tympanus.net/Development/GridLoadingEffects/images/2.jpg"></a></li>
+        <li><a href="http://drbl.in/fARU"><img src="http://tympanus.net/Development/GridLoadingEffects/images/14.png"></a></li>
+        <li><a href="http://drbl.in/fWMM"><img src="http://tympanus.net/Development/GridLoadingEffects/images/1.jpg"></a></li>
+        <li><a href="http://drbl.in/fWPV"><img src="http://tympanus.net/Development/GridLoadingEffects/images/3.jpg"></a></li>
+        <li><a href="http://drbl.in/fWMT"><img src="http://tympanus.net/Development/GridLoadingEffects/images/4.jpg"></a></li>
+        <li><a href="http://drbl.in/fGhI"><img src="http://tympanus.net/Development/GridLoadingEffects/images/5.jpg"></a></li>
+        <li><a href="http://drbl.in/fKCf"><img src="http://tympanus.net/Development/GridLoadingEffects/images/6.jpg"></a></li>
+        <li><a href="http://drbl.in/fLBG"><img src="http://tympanus.net/Development/GridLoadingEffects/images/7.jpg"></a></li>
+        <li><a href="http://drbl.in/fPEY"><img src="http://tympanus.net/Development/GridLoadingEffects/images/8.jpg"></a></li>
+        <li><a href="http://drbl.in/fWwG"><img src="http://tympanus.net/Development/GridLoadingEffects/images/9.jpg"></a></li>
+        <li><a href="http://drbl.in/fQdt"><img src="http://tympanus.net/Development/GridLoadingEffects/images/12.png"></a></li>
+        <li><a href="http://drbl.in/fHaa"><img src="http://tympanus.net/Development/GridLoadingEffects/images/13.png"></a></li>
+        <li><a href="http://drbl.in/gXMo"><img src="http://tympanus.net/Development/GridLoadingEffects/images/10.png"></a></li>
+        <li><a href="http://drbl.in/gXMn"><img src="http://tympanus.net/Development/GridLoadingEffects/images/11.png"></a></li>
+        <li><a href="http://drbl.in/fzYo"><img src="http://tympanus.net/Development/GridLoadingEffects/images/2.jpg"></a></li>
+        <li><a href="http://drbl.in/fARU"><img src="http://tympanus.net/Development/GridLoadingEffects/images/14.png"></a></li>
+        <li><a href="http://drbl.in/fWMM"><img src="http://tympanus.net/Development/GridLoadingEffects/images/1.jpg"></a></li>
+        <li><a href="http://drbl.in/fWPV"><img src="http://tympanus.net/Development/GridLoadingEffects/images/3.jpg"></a></li>
+        <li><a href="http://drbl.in/fWMT"><img src="http://tympanus.net/Development/GridLoadingEffects/images/4.jpg"></a></li>
+        <li><a href="http://drbl.in/fGhI"><img src="http://tympanus.net/Development/GridLoadingEffects/images/5.jpg"></a></li>
+        <li><a href="http://drbl.in/fKCf"><img src="http://tympanus.net/Development/GridLoadingEffects/images/6.jpg"></a></li>
+        <li><a href="http://drbl.in/fLBG"><img src="http://tympanus.net/Development/GridLoadingEffects/images/7.jpg"></a></li>
+        <li><a href="http://drbl.in/fPEY"><img src="http://tympanus.net/Development/GridLoadingEffects/images/8.jpg"></a></li>
+        <li><a href="http://drbl.in/fWwG"><img src="http://tympanus.net/Development/GridLoadingEffects/images/9.jpg"></a></li>
+        <li><a href="http://drbl.in/fQdt"><img src="http://tympanus.net/Development/GridLoadingEffects/images/12.png"></a></li>
+        <li><a href="http://drbl.in/fHaa"><img src="http://tympanus.net/Development/GridLoadingEffects/images/13.png"></a></li>
+        <li><a href="http://drbl.in/gXMo"><img src="http://tympanus.net/Development/GridLoadingEffects/images/10.png"></a></li>
+        <li><a href="http://drbl.in/gXMn"><img src="http://tympanus.net/Development/GridLoadingEffects/images/11.png"></a></li>
+        <li><a href="http://drbl.in/fzYo"><img src="http://tympanus.net/Development/GridLoadingEffects/images/2.jpg"></a></li>
+        <li><a href="http://drbl.in/fARU"><img src="http://tympanus.net/Development/GridLoadingEffects/images/14.png"></a></li>
+        <li><a href="http://drbl.in/fWMM"><img src="http://tympanus.net/Development/GridLoadingEffects/images/1.jpg"></a></li>
+        <li><a href="http://drbl.in/fWPV"><img src="http://tympanus.net/Development/GridLoadingEffects/images/3.jpg"></a></li>
+        <li><a href="http://drbl.in/fWMT"><img src="http://tympanus.net/Development/GridLoadingEffects/images/4.jpg"></a></li>
+        <li><a href="http://drbl.in/fGhI"><img src="http://tympanus.net/Development/GridLoadingEffects/images/5.jpg"></a></li>
+        <li><a href="http://drbl.in/fKCf"><img src="http://tympanus.net/Development/GridLoadingEffects/images/6.jpg"></a></li>
+        <li><a href="http://drbl.in/fLBG"><img src="http://tympanus.net/Development/GridLoadingEffects/images/7.jpg"></a></li>
+        <li><a href="http://drbl.in/fPEY"><img src="http://tympanus.net/Development/GridLoadingEffects/images/8.jpg"></a></li>
+        <li><a href="http://drbl.in/fWwG"><img src="http://tympanus.net/Development/GridLoadingEffects/images/9.jpg"></a></li>
+        <li><a href="http://drbl.in/fWPV"><img src="http://tympanus.net/Development/GridLoadingEffects/images/3.jpg"></a></li>
+        <li><a href="http://drbl.in/fGhI"><img src="http://tympanus.net/Development/GridLoadingEffects/images/5.jpg"></a></li>
+        <li><a href="http://drbl.in/fzYo"><img src="http://tympanus.net/Development/GridLoadingEffects/images/2.jpg"></a></li>
+    </ul>
+</div>
+<script>
+    new AnimOnScroll(document.getElementById('grid'), {
+        minDuration: 0.4,
+        maxDuration: 0.7,
+        viewportFactor: 0.2
+    });
+</script>
