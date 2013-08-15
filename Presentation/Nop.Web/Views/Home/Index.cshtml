@@ -8,6 +8,9 @@
         
         @* disable topic block:
         @Html.Action("TopicBlock", "Topic", new { systemName = "HomePageText" })
+        @Html.Action("HomepageCategories", "Catalog")
+        @Html.Action("HomepageProducts", "Catalog")
+        @Html.Action("HomepageBestSellers", "Catalog")   
         *@
         
         @* display 
@@ -18,10 +21,8 @@
             + custom -- image m x n
         *@
 
-        @Html.Action("HomepageCategories", "Catalog")
-        @Html.Action("HomepageProducts", "Catalog")
-        @Html.Action("HomepageBestSellers", "Catalog")        
-        @Html.Action("HomePagedGridItem", "Catalog");
+     
+        @Html.Action("HomePageGridItem", "Catalog");
 
         @* disable news and poll
         @Html.Action("HomePageNews", "News")
