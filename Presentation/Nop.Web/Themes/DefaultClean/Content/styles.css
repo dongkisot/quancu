@@ -20,7 +20,7 @@ input,select{vertical-align:middle;}
 
 
 /* OTHER RESET STYLESHEET (HTML GENERAL) */
-body{text-align:center;font-family:arial,verdana,helvetica,sans-serif;font-size:12px;background:none repeat scroll 0 0 #F6F6F4;color:#5C5B5B;line-height:normal;}
+body{text-align:center;font-family:arial,verdana,helvetica,sans-serif;font-size:12px;color:#5C5B5B;line-height:normal;}
 a{color:#5C5B5B;text-decoration:none;font-weight:normal;}
 a:hover{color:#B80709;text-decoration:underline;}
 h1,h2,h3,h4,h5,h6{font-family:arial,helvetica,sans-serif;}
@@ -34,7 +34,7 @@ input[type="text"]:disabled{background:none repeat scroll 0 0 #FFF;}
 
 
 /* MASTER PAGE WRAPPERS */
-.master-wrapper-page{margin:30px auto 0;width:960px;background:none repeat scroll 0 0 #FFF;box-shadow:0 0.5em 2em rgba(0,0,0,0.1);-moz-box-shadow:0 0.5em 2em rgba(0,0,0,0.1);-webkit-box-shadow:0 0.5em 2em rgba(0,0,0,0.1);}
+.master-wrapper-page{margin:30px auto 0;width:960px;background:none repeat scroll 0 0 #FFF;/*box-shadow:0 0.5em 2em rgba(0,0,0,0.1);-moz-box-shadow:0 0.5em 2em rgba(0,0,0,0.1);-webkit-box-shadow:0 0.5em 2em rgba(0,0,0,0.1);*/}
 .master-wrapper-content{float:left;width:930px;margin:15px 15px 0 15px;padding:15px 0 0;text-align:left;background:none repeat scroll 0 0 #FFFFFF;}
 .master-wrapper-main{font-family:arial,helvetica,sans-serif;color:#5C5B5B;}
 /* one column master page */
@@ -1247,3 +1247,34 @@ pre{white-space:pre-wrap;white-space:normal;word-wrap:break-word;}
 .csharpcode .attr{color:red;}
 .csharpcode .alt{background-color:#f4f4f4;width:100%;margin:0;}
 .csharpcode .lnum{color:#606060;}
+
+/* Flat UI color */
+.turquoise { background-color: #1abc9c;}
+    .turquoise .product-title, .turquoise .description, .turquoise h2 { color: #ffffff !important;}
+    .turquoise a { color: #ffffff !important;}
+
+.emerald { background-color: #2ecc71; }
+.peter-river { background-color: #3498db;}
+.peter-river { background-color: #3498db;}
+.amethyst { background-color: #9b59b6;}
+.wet-asphalt { background-color: #34495e;}
+.green-sea { background-color: #16a085;}
+.nephritis { background-color: #27ae60;}
+.nephritis { background-color: #27ae60;}
+.belize-hole { background-color: #2980b9;}
+.wisteria { background-color: #8e44ad;}
+.midnight-blue { background-color: #2c3e50;}
+.sun-flower { background-color: #f1c40f;}
+.carrot { background-color: #e67e22;}
+.alizarin { background-color: #e74c3c;}
+.cloud { background-color: #ecf0f1;}
+.concrete { background-color: #95a5a6;}
+.orange { background-color: #f39c12;}
+.pumpkin { background-color: #d35400;}
+.pomegranate { background-color: #c0392b;}
+.silver { background-color: #bdc3c7;}
+.asbetos { background-color: #7f8c8d;}
+
+
+
+
