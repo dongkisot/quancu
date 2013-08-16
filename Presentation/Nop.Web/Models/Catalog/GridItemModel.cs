@@ -28,6 +28,7 @@ namespace Nop.Web.Models.Catalog
         public string ShortDescription { get; set; }
         public string FullDescription { get; set; }
         public string SeName { get; set; }
+        public int DisplayOrder { get; set; }    
 
         //picture
         public PictureModel DefaultPictureModel { get; set; }

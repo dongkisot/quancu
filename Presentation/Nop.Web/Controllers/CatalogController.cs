@@ -3022,16 +3022,18 @@ namespace Nop.Web.Controllers
             var products = _productService.GetAllProductsDisplayedOnHomePage();
             //ACL and store mapping
             products = products.Where(p => _aclService.Authorize(p) && _storeMappingService.Authorize(p)).ToList();
-            var model = PrepareGridItemModels(products, true, true, productThumbPictureSize).ToList();
+            var models = PrepareGridItemModels(products, true, true, productThumbPictureSize).ToList();
 
             // homepage category
             var categories = _categoryService.GetAllCategoriesDisplayedOnHomePage()
                 .Where(c => _aclService.Authorize(c) && _storeMappingService.Authorize(c))
                 .ToList();
 
-            model.AddRange(PrepareGridItemModels(categories, true, productThumbPictureSize));
+            models.AddRange(PrepareGridItemModels(categories, true, productThumbPictureSize));
 
-            return PartialView(model);
+            models = models.OrderBy(i => i.DisplayOrder).ToList();
+
+            return PartialView(models);
         }
     }
 }
