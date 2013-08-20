@@ -43,6 +43,7 @@ namespace Nop.Web.Controllers
     {
 		#region Fields
 
+        private const int HOMEPAGE_PICTURE_SIZE = 236;
         private readonly ICategoryService _categoryService;
         private readonly IManufacturerService _manufacturerService;
         private readonly IProductService _productService;
@@ -3015,21 +3016,21 @@ namespace Nop.Web.Controllers
 
         #endregion
 
-
         [ChildActionOnly]
-        public ActionResult HomePageGridItem(int? productThumbPictureSize)
-        {          
+        public ActionResult HomePageGridItem()
+        {
+            
             var products = _productService.GetAllProductsDisplayedOnHomePage();
             //ACL and store mapping
             products = products.Where(p => _aclService.Authorize(p) && _storeMappingService.Authorize(p)).ToList();
-            var models = PrepareGridItemModels(products, true, true, productThumbPictureSize).ToList();
+            var models = PrepareGridItemModels(products, true, true, HOMEPAGE_PICTURE_SIZE).ToList();
 
             // homepage category
             var categories = _categoryService.GetAllCategoriesDisplayedOnHomePage()
                 .Where(c => _aclService.Authorize(c) && _storeMappingService.Authorize(c))
                 .ToList();
 
-            models.AddRange(PrepareGridItemModels(categories, true, productThumbPictureSize));
+            models.AddRange(PrepareGridItemModels(categories, true, HOMEPAGE_PICTURE_SIZE));
 
             models = models.OrderBy(i => i.DisplayOrder).ToList();
 

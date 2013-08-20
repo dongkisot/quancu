@@ -96,9 +96,10 @@
 			imagesLoaded( this.el, function() {
 				
 				// initialize masonry
-				new Masonry( self.el, {
+			    new Masonry(self.el, {			        
 					itemSelector: 'li',
-					transitionDuration : 0
+					transitionDuration: 0
+					
 				} );
 				
 				if( Modernizr.cssanimations ) {

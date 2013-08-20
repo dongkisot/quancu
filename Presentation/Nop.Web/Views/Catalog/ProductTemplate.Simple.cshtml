@@ -3,7 +3,7 @@
 @using Nop.Core.Infrastructure;
 @using Nop.Web.Models.Catalog;
 @{
-    Layout = "~/Views/Shared/_ColumnsTwo.cshtml";
+    Layout = "~/Views/Shared/_RootPopup.cshtml";
 
     //title, meta
     Html.AddTitleParts(!String.IsNullOrEmpty(Model.MetaTitle) ? Model.MetaTitle : Model.Name);
@@ -18,7 +18,7 @@
     }
 }
 <!--product breadcrumb-->
-@Html.Action("ProductBreadcrumb", "Catalog", new { productId = Model.Id })
+@*@Html.Action("ProductBreadcrumb", "Catalog", new { productId = Model.Id })*@
 <div class="page product-details-page">
     <div class="page-body">
         @Html.Widget("productdetails_top")
@@ -49,8 +49,9 @@
                         @Html.Partial("_BackInStockSubscription", Model)
                         <!--product manufacturers-->
                         @Html.Action("ProductManufacturers", "Catalog", new { productId = Model.Id })
+                        @*
                         <!--product reviews-->
-                        @Html.Action("ProductReviewOverview", "Catalog", new { productId = Model.Id })
+                        @Html.Action("ProductReviewOverview", "Catalog", new { productId = Model.Id })                        
                         <!--sample download-->
                         @Html.Partial("_DownloadSample", Model)
                         <!--attributes-->
@@ -64,19 +65,19 @@
                             var dataDictGiftCard = new ViewDataDictionary();
                             dataDictGiftCard.TemplateInfo.HtmlFieldPrefix = string.Format("giftcard_{0}", Model.Id);
                             @Html.Partial("_GiftCardInfo", Model.GiftCard, dataDictGiftCard)
-                        }
+                        }*@
                         <!--price & add to cart-->
                         @{
                             var dataDictPrice = new ViewDataDictionary();
                             dataDictPrice.TemplateInfo.HtmlFieldPrefix = string.Format("price_{0}", Model.Id);
                             @Html.Partial("_ProductPrice", Model.ProductPrice, dataDictPrice)
                             
-                            var dataDictAddToCart = new ViewDataDictionary();
-                            dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = string.Format("addtocart_{0}", Model.Id);
-                            @Html.Partial("_AddToCart", Model.AddToCart, dataDictAddToCart)                    
+                            //var dataDictAddToCart = new ViewDataDictionary();
+                            //dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = string.Format("addtocart_{0}", Model.Id);
+                            //@Html.Partial("_AddToCart", Model.AddToCart, dataDictAddToCart)                    
                         }
-                        @Html.Action("ProductEmailAFriendButton", "Catalog", new { productId = Model.Id })
-                        @Html.Action("CompareProductsButton", "Catalog", new { productId = Model.Id })
+                        @*@Html.Action("ProductEmailAFriendButton", "Catalog", new { productId = Model.Id })*@
+                        @*@Html.Action("CompareProductsButton", "Catalog", new { productId = Model.Id })*@
                         @Html.Action("ShareButton", "Catalog")
                         @Html.Widget("productdetails_overview_bottom")
                     </div>
