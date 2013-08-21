@@ -1,0 +1,10 @@
+﻿@model Nop.Web.Models.Catalog.CategoryModel
+   
+@using System.Drawing
+
+ @foreach (var product in Model.Products)
+{
+    <div class="item-box">
+        @Html.Partial("_ProductBox", product)
+    </div>
+}
