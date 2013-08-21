@@ -2,8 +2,12 @@
 @using Nop.Web.Models.Common;
 <ul class="top-menu">
     @Html.Widget("header_menu_before")
-    <li><a href="@Url.RouteUrl("HomePage")">@T("HomePage")</a></li>
-    @if (Model.RecentlyAddedProductsEnabled)
+    <li><a href="@Url.RouteUrl("Topic", new { SystemName = "aboutus" })">@T("AboutUs")</a></li>
+    <li><a href="@Url.RouteUrl("Category", new { SeName = "thuc-don" })">Thực đơn</a></li>
+    <li><a href="@Url.RouteUrl("Category", new { SeName = "dac-san" })">Đặc sản</a></li>
+    <li><a href="@Url.RouteUrl("Category", new { SeName = "khuyen-mai" })">Khuyến mại</a></li>
+    <li><a href="@Url.RouteUrl("Topic", new { SystemName = "Restaurant" })">@T("Restaurant")</a></li>
+    @*@if (Model.RecentlyAddedProductsEnabled)
     {
         <li><a href="@Url.RouteUrl("RecentlyAddedProducts")">@T("Products.NewProducts")</a>
         </li>
@@ -17,7 +21,7 @@
     @if (Model.ForumEnabled)
     {
         <li><a href="@Url.RouteUrl("Boards")">@T("Forum.Forums")</a></li>
-    }
+    }*@
     <li><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
     @Html.Widget("header_menu_after")
 </ul>
