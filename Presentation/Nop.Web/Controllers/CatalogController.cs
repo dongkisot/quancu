@@ -1232,7 +1232,7 @@ namespace Nop.Web.Controllers
                         });
                     }
 
-                    if (model.PagingFilteringContext.PageSizeOptions.Any())
+                    if (model.PagingFilteringContext.PageSizeOptions.Count > 1)
                     {
                         model.PagingFilteringContext.PageSizeOptions = model.PagingFilteringContext.PageSizeOptions.OrderBy(x => int.Parse(x.Text)).ToList();
                         model.PagingFilteringContext.AllowCustomersToSelectPageSize = true;
