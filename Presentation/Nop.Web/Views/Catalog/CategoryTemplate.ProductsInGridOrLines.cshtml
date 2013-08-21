@@ -1,6 +1,6 @@
 ﻿@model CategoryModel
 @{
-    Layout = "~/Views/Shared/_ColumnsTwo.cshtml";
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
     Html.AddTitleParts(!String.IsNullOrEmpty(Model.MetaTitle) ? Model.MetaTitle : Model.Name);
     Html.AddMetaDescriptionParts(Model.MetaDescription);
     Html.AddMetaKeywordParts(Model.MetaKeywords);
@@ -46,7 +46,7 @@
     @Html.Widget("categorydetails_after_breadcrumb")
 }
 <div class="page category-page">
-    <div class="page-title">
+    <div class="page-title" style="display:none">
         <h1>@Model.Name</h1>
     </div>
     <div class="page-body">
@@ -175,3 +175,39 @@
         @Html.Widget("categorydetails_bottom")
     </div>
 </div>
+
+</div>
+<div id="loading"></div> 
+<script type="text/javascript">
+
+    var page = 0;
+    var _inCallback = false;
+
+    function loadProducts() {
+        if (page > -1 && !_inCallback) {
+            _inCallback = true;
+            page++;
+            $('div#loading').html('<p><img src="/Content/Images/loading.gif"></p>');
+            $.get("/Catalog/GetProducts", { categoryId: "1", pageNumber: "1" }, function (data) {
+                if (data != '') {
+                    $(".product-list").append(data);
+                }
+                else {
+                    page = -1;
+                }
+
+                _inCallback = false;
+                $('div#loading').empty();
+            });
+        }
+    }
+
+    var dcList = true;
+
+    $(window).scroll(function () {
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+
+            loadProducts();
+        }
+    });
+</script>
