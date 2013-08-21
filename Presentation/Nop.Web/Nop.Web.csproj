@@ -1749,6 +1749,7 @@
     <Content Include="Views\Common\EuCookieLaw.Mobile.cshtml" />
     <Content Include="Views\Common\EuCookieLaw.cshtml" />
     <Content Include="Views\Catalog\HomePageGridItem.cshtml" />
+    <Content Include="Views\Catalog\_GetProducts.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
