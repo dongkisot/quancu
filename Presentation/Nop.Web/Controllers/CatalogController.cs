@@ -1409,6 +1409,78 @@ namespace Nop.Web.Controllers
             return View(templateViewPath, model);
         }
 
+        public ActionResult GetProducts(int categoryId, int pageNumber)
+        {
+            return PartialView("_GetProducts", GetProductsByCateIdPageNumber(categoryId, pageNumber));
+        }
+        public CategoryModel GetProductsByCateIdPageNumber(int categoryId, int pageNumber)
+        {
+            CatalogPagingFilteringModel command = new CatalogPagingFilteringModel
+            {
+                PageNumber = pageNumber,
+                PageSize = 20,
+                OrderBy = 0,
+            };
+
+
+            var category = _categoryService.GetCategoryById(categoryId);
+            if (category == null || category.Deleted)
+                return null;
+
+            //Check whether the current user has a "Manage catalog" permission
+            //It allows him to preview a category before publishing
+            if (!category.Published && !_permissionService.Authorize(StandardPermissionProvider.ManageCategories))
+                return null;
+
+            //ACL (access control list)
+            if (!_aclService.Authorize(category))
+                return null;
+
+            //Store mapping
+            if (!_storeMappingService.Authorize(category))
+                return null;
+
+            //'Continue shopping' URL
+            _genericAttributeService.SaveAttribute(_workContext.CurrentCustomer,
+                SystemCustomerAttributeNames.LastContinueShoppingPage,
+                _webHelper.GetThisPageUrl(false),
+                _storeContext.CurrentStore.Id);
+
+            var model = category.ToModel();
+
+            var categoryIds = new List<int>();
+            categoryIds.Add(category.Id);
+
+            //price ranges
+            model.PagingFilteringContext.PriceRangeFilter.LoadPriceRangeFilters(category.PriceRanges, _webHelper, _priceFormatter);
+            var selectedPriceRange = model.PagingFilteringContext.PriceRangeFilter.GetSelectedPriceRange(_webHelper, category.PriceRanges);
+            decimal? minPriceConverted = null;
+            decimal? maxPriceConverted = null;
+            if (selectedPriceRange != null)
+            {
+                if (selectedPriceRange.From.HasValue)
+                    minPriceConverted = _currencyService.ConvertToPrimaryStoreCurrency(selectedPriceRange.From.Value, _workContext.WorkingCurrency);
+
+                if (selectedPriceRange.To.HasValue)
+                    maxPriceConverted = _currencyService.ConvertToPrimaryStoreCurrency(selectedPriceRange.To.Value, _workContext.WorkingCurrency);
+            }
+
+            IList<int> alreadyFilteredSpecOptionIds = model.PagingFilteringContext.SpecificationFilter.GetAlreadyFilteredSpecOptionIds(_webHelper);
+            IList<int> filterableSpecificationAttributeOptionIds = null;
+            var products = _productService.SearchProducts(out filterableSpecificationAttributeOptionIds, true,
+                categoryIds: categoryIds,
+                storeId: _storeContext.CurrentStore.Id,
+                visibleIndividuallyOnly: true,
+                featuredProducts: _catalogSettings.IncludeFeaturedProductsInNormalLists ? null : (bool?)false,
+                priceMin: minPriceConverted, priceMax: maxPriceConverted,
+                filteredSpecs: alreadyFilteredSpecOptionIds,
+                orderBy: (ProductSortingEnum)command.OrderBy,
+                pageIndex: command.PageNumber - 1,
+                pageSize: command.PageSize);
+            model.Products = PrepareProductOverviewModels(products).ToList();
+            return model;
+        }
+
         [ChildActionOnly]
         public ActionResult CategoryNavigation(int currentCategoryId, int currentProductId)
         {
