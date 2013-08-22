@@ -176,19 +176,22 @@
     </div>
 </div>
 
-</div>
 <div id="loading"></div> 
 <script type="text/javascript">
 
-    var page = 0;
+    var page = 1;
     var _inCallback = false;
+    var cateId = @Model.Id
+    
 
     function loadProducts() {
+        
+
         if (page > -1 && !_inCallback) {
             _inCallback = true;
             page++;
             $('div#loading').html('<p><img src="/Content/Images/loading.gif"></p>');
-            $.get("/Catalog/GetProducts", { categoryId: "1", pageNumber: "1" }, function (data) {
+            $.get("/Catalog/GetProducts", { categoryId: cateId, pageNumber: page }, function (data) {
                 if (data != '') {
                     $(".product-list").append(data);
                 }

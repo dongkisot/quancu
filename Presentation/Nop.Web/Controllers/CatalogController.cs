@@ -1415,15 +1415,15 @@ namespace Nop.Web.Controllers
         }
         public CategoryModel GetProductsByCateIdPageNumber(int categoryId, int pageNumber)
         {
+            
+            var category = _categoryService.GetCategoryById(categoryId);
             CatalogPagingFilteringModel command = new CatalogPagingFilteringModel
             {
                 PageNumber = pageNumber,
-                PageSize = 20,
+                PageSize = category.PageSize,
                 OrderBy = 0,
             };
 
-
-            var category = _categoryService.GetCategoryById(categoryId);
             if (category == null || category.Deleted)
                 return null;
 
@@ -1450,6 +1450,72 @@ namespace Nop.Web.Controllers
 
             var categoryIds = new List<int>();
             categoryIds.Add(category.Id);
+
+            //page size
+            model.PagingFilteringContext.AllowCustomersToSelectPageSize = false;
+            if (category.AllowCustomersToSelectPageSize && category.PageSizeOptions != null)
+            {
+                var pageSizes = category.PageSizeOptions.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                if (pageSizes.Any())
+                {
+                    // get the first page size entry to use as the default (category page load) or if customer enters invalid value via query string
+                    if (command.PageSize <= 0 || !pageSizes.Contains(command.PageSize.ToString()))
+                    {
+                        int temp = 0;
+
+                        if (int.TryParse(pageSizes.FirstOrDefault(), out temp))
+                        {
+                            if (temp > 0)
+                            {
+                                command.PageSize = temp;
+                            }
+                        }
+                    }
+
+                    var currentPageUrl = _webHelper.GetThisPageUrl(true);
+                    var sortUrl = _webHelper.ModifyQueryString(currentPageUrl, "pagesize={0}", null);
+                    sortUrl = _webHelper.RemoveQueryString(sortUrl, "pagenumber");
+
+                    foreach (var pageSize in pageSizes)
+                    {
+                        int temp = 0;
+                        if (!int.TryParse(pageSize, out temp))
+                        {
+                            continue;
+                        }
+                        if (temp <= 0)
+                        {
+                            continue;
+                        }
+
+                        model.PagingFilteringContext.PageSizeOptions.Add(new SelectListItem()
+                        {
+                            Text = pageSize,
+                            Value = String.Format(sortUrl, pageSize),
+                            Selected = pageSize.Equals(command.PageSize.ToString(), StringComparison.InvariantCultureIgnoreCase)
+                        });
+                    }
+
+                    if (model.PagingFilteringContext.PageSizeOptions.Count > 1)
+                    {
+                        model.PagingFilteringContext.PageSizeOptions = model.PagingFilteringContext.PageSizeOptions.OrderBy(x => int.Parse(x.Text)).ToList();
+                        model.PagingFilteringContext.AllowCustomersToSelectPageSize = true;
+
+                        if (command.PageSize <= 0)
+                        {
+                            command.PageSize = int.Parse(model.PagingFilteringContext.PageSizeOptions.FirstOrDefault().Text);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                //customer is not allowed to select a page size
+                command.PageSize = category.PageSize;
+            }
+
+            if (command.PageSize <= 0) command.PageSize = category.PageSize;
 
             //price ranges
             model.PagingFilteringContext.PriceRangeFilter.LoadPriceRangeFilters(category.PriceRanges, _webHelper, _priceFormatter);
