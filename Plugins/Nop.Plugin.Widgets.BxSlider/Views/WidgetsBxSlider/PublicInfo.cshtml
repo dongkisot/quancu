@@ -1,0 +1,44 @@
+﻿@model Nop.Plugin.Widgets.BxSlider.Models.PublicInfoModel
+@{
+    Layout = "";
+
+    Html.AddScriptParts("~/Plugins/Widgets.BxSlider/Scripts/jquery.bxslider.min.js");
+    Html.AddCssFileParts("~/Plugins/Widgets.BxSlider/Content/jquery.bxslider.css");
+}
+@using System
+@using Nop.Web.Framework.UI
+
+@helper RenderSliderLine(string pictureUrl, string text, string link, string dataTransition = "")
+{
+    <li>
+        if (!string.IsNullOrEmpty(pictureUrl))
+        {
+            if (!string.IsNullOrEmpty(link))
+            {
+                <a href="@link">
+                    <img src="@pictureUrl" data-thumb="@pictureUrl" data-transition="@dataTransition" alt="" title="@text" />
+                </a>
+            }
+            else
+            {
+                <img src="@pictureUrl" data-thumb="@pictureUrl" data-transition="@dataTransition" alt="" title="@text" />
+            }
+        }
+    </li>
+}
+<div class="slider-wrapper theme-default">
+    <ul class="bxslider">
+        @RenderSliderLine(Model.Picture1Url, Model.Text1, Model.Link1)
+        @RenderSliderLine(Model.Picture2Url, Model.Text2, Model.Link2)
+        @RenderSliderLine(Model.Picture3Url, Model.Text3, Model.Link3, "slideInLeft")
+        @RenderSliderLine(Model.Picture4Url, Model.Text4, Model.Link4)
+    </ul>
+</div>
+<script type="text/javascript">
+    $(window).load(function () {
+        $('.bxslider').bxSlider({
+            mode: 'fade',
+            captions: true
+        });
+    });
+</script>

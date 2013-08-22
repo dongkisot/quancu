@@ -4,16 +4,14 @@
     //resources
     Html.AppendCssFileParts("~/Content/Masonry/masonry.css");
     Html.AddCssFileParts("~/Content/fancybox/jquery.fancybox-1.3.4.css");
-    
+
     Html.AppendScriptParts("~/Scripts/jquery.fancybox-1.3.4.pack.js");
     Html.AppendScriptParts("~/Scripts/AnimOnScroll.js");
     Html.AppendScriptParts("~/Scripts/imagesloaded.js");
     Html.AppendScriptParts("~/Scripts/EventEmitter.min.js");
     Html.AppendScriptParts("~/Scripts/masonry.pkgd.min.js");
     Html.AppendScriptParts("~/Scripts/classie.js");
-
 }
-
 <div class="feature-products container">
     <!-- Top Navigation -->
     <ul class="grid effect-2" id="grid">
@@ -26,7 +24,7 @@
                             <img alt="@item.DefaultPictureModel.AlternateText" src="@item.DefaultPictureModel.ImageUrl" title="@item.DefaultPictureModel.Title" />
                         </a>
                     </div>
-                    <h2>@item.Name</h2>
+                    @*<h2>@item.Name</h2>*@
                     <div class="product-title">
                         <a href="@Url.RouteUrl("Product", new { SeName = @item.SeName })">@item.Name</a>
                     </div>
@@ -35,7 +33,7 @@
                     </div>
                 </div>
             </li>
-        }        
+        }
     </ul>
 </div>
 <script>
@@ -44,7 +42,7 @@
         maxDuration: 0.7,
         viewportFactor: 0.2
     });
-        
+
     $(document).ready(function () {
 
         /* Apply fancybox to multiple items */
@@ -54,9 +52,19 @@
             'speedIn': 600,
             'speedOut': 200,
             'overlayShow': true,
-            'type' : 'iframe'
-        });              
-
+            'autoScale': true,
+            'type': 'iframe',
+            'width': 600,
+            'height': 1000,
+            'padding' : 14,
+            'autoDimensions': true,
+            'titleShow': false,       
+            'onComplete': function () {
+                $('#fancybox-frame').load(function () { // wait for frame to load and then gets it's height
+                    $('#fancybox-content').height($(this).contents().find('body').height() + 30);
+                });
+            }
+        });
     });
 
 </script>

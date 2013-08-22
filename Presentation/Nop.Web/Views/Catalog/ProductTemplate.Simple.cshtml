@@ -9,6 +9,9 @@
     Html.AddTitleParts(!String.IsNullOrEmpty(Model.MetaTitle) ? Model.MetaTitle : Model.Name);
     Html.AddMetaDescriptionParts(Model.MetaDescription);
     Html.AddMetaKeywordParts(Model.MetaKeywords);
+    
+    //CSS
+    Html.AppendCssFileParts("~/Themes/DefaultClean/Content/styles.css");
 
     var canonicalUrlsEnabled = EngineContext.Current.Resolve<SeoSettings>().CanonicalUrlsEnabled;
     if (canonicalUrlsEnabled)
@@ -35,13 +38,25 @@
                             <h1 itemprop="name">
                                 @Model.Name
                             </h1>
-                        </div>
+                        </div>                        
+                        <!--price & add to cart-->
+                        @{
+                            var dataDictPrice = new ViewDataDictionary();
+                            dataDictPrice.TemplateInfo.HtmlFieldPrefix = string.Format("price_{0}", Model.Id);
+                            @Html.Partial("_ProductPrice", Model.ProductPrice, dataDictPrice)
+                            
+                            //var dataDictAddToCart = new ViewDataDictionary();
+                            //dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = string.Format("addtocart_{0}", Model.Id);
+                            //@Html.Partial("_AddToCart", Model.AddToCart, dataDictAddToCart)                    
+                        }
+                        @Html.Action("ShareButton", "Catalog")
                         @if (!String.IsNullOrEmpty(Model.ShortDescription))
                         {
                             <div class="short-description">
                                 @Html.Raw(Model.ShortDescription)
                             </div>
                         }
+                        @*
                         @Html.Widget("productdetails_overview_top")
                         <!--product SKU, manufacturer part number, stock info-->
                         @Html.Partial("_SKU_Man_Stock", Model)
@@ -49,7 +64,7 @@
                         @Html.Partial("_BackInStockSubscription", Model)
                         <!--product manufacturers-->
                         @Html.Action("ProductManufacturers", "Catalog", new { productId = Model.Id })
-                        @*
+                        
                         <!--product reviews-->
                         @Html.Action("ProductReviewOverview", "Catalog", new { productId = Model.Id })                        
                         <!--sample download-->
@@ -66,19 +81,8 @@
                             dataDictGiftCard.TemplateInfo.HtmlFieldPrefix = string.Format("giftcard_{0}", Model.Id);
                             @Html.Partial("_GiftCardInfo", Model.GiftCard, dataDictGiftCard)
                         }*@
-                        <!--price & add to cart-->
-                        @{
-                            var dataDictPrice = new ViewDataDictionary();
-                            dataDictPrice.TemplateInfo.HtmlFieldPrefix = string.Format("price_{0}", Model.Id);
-                            @Html.Partial("_ProductPrice", Model.ProductPrice, dataDictPrice)
-                            
-                            //var dataDictAddToCart = new ViewDataDictionary();
-                            //dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = string.Format("addtocart_{0}", Model.Id);
-                            //@Html.Partial("_AddToCart", Model.AddToCart, dataDictAddToCart)                    
-                        }
                         @*@Html.Action("ProductEmailAFriendButton", "Catalog", new { productId = Model.Id })*@
                         @*@Html.Action("CompareProductsButton", "Catalog", new { productId = Model.Id })*@
-                        @Html.Action("ShareButton", "Catalog")
                         @Html.Widget("productdetails_overview_bottom")
                     </div>
                     @if (!String.IsNullOrEmpty(Model.FullDescription))

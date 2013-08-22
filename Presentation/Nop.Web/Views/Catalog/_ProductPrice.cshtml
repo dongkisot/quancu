@@ -41,7 +41,7 @@
                     {<text>product-price</text>}
                     else
                     {<text>non-discounted-price</text>}">
-
+            &nbsp;
             @if (!String.IsNullOrWhiteSpace(Model.OldPrice) || !String.IsNullOrWhiteSpace(Model.PriceWithDiscount))
             {
                 @*display "Price:" label if we have old price or discounted one*@
@@ -78,10 +78,10 @@
                     }
                 </span>
             </div>
-         }
-         if (!String.IsNullOrEmpty(Model.CurrencyCode))
-         {
+        }
+        if (!String.IsNullOrEmpty(Model.CurrencyCode))
+        {
             <meta itemprop="priceCurrency" content="@Model.CurrencyCode" />
-         }
+        }
     }
 </div>

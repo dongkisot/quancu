@@ -15,9 +15,9 @@
     @Html.NopCanonicalUrls()
     @*Favicon - upload favicon.ico file to the root directory*@
     @Html.Action("Favicon", "Common")
-    @Html.Widget("head_html_tag")
+    @Html.Widget("head_html_tag")    
 </head>
-<body>
+<body id="popup-window">
     @Html.Widget("body_start_html_tag_after")
     @RenderBody()
     @Html.Widget("body_end_html_tag_before")
